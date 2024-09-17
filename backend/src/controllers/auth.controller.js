@@ -11,13 +11,12 @@ export const register = async (req, res) => {
       password,
     });
 
-    await newUser.save();
-    res.send("registrando");
+    //created variable userSaved for save all data included the created at and updated at, this information are without the schema model. (timestamps)
+    const userSaved = await newUser.save();
+    res.json(userSaved);
   } catch (error) {
     console.log(error);
   }
-
-
 };
 
 export const login = (req, res) => {
