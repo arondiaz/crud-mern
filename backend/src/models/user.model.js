@@ -1,6 +1,6 @@
 import moongose from "mongoose";
 
-const userSchema = moongose.Schema({
+const userSchema = new moongose.Schema({
   username: {
     type: String,
     required: true,
