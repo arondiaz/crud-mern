@@ -64,3 +64,10 @@ export const login = async (req, res) => {
     console.log(error);
   }
 };
+
+export const logout = (req, res) => {
+  res.cookie("token", "", {
+    expires: new Date(0),
+  });
+  return res.status(200).send();
+};
