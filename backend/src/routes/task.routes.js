@@ -10,10 +10,10 @@ import {
 
 const router = Router();
 
-router.get("/task", authRequired, getTasks);
-router.get("/task/:id", authRequired, getOneTask);
-router.post("/task", authRequired, createTask);
-router.delete("/task/:id", authRequired, deleteTask);
-router.put("/task", authRequired, updateTask);
+router.get("/api/task", authRequired, getTasks);
+router.get("/api/task/:id", authRequired, getOneTask);
+router.post("/api/task", authRequired, createTask);
+router.delete("/api/task/:id", authRequired, deleteTask);
+router.put("/api/task", authRequired, updateTask);
 
 export default router;
