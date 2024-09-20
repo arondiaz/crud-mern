@@ -1,13 +1,15 @@
 import Task from "../models/task.model.js";
 
 export const getTasks = async (req, res) => {
-  const tasks = await Task.find();
+  const tasks = await Task.find({
+    user: req.decoded.id, //Only gets the taks of the user who is logged in.
+  }).populate("user");
 
   res.json(tasks);
 };
 
 export const getOneTask = async (req, res) => {
-  const task = await Task.findById(req.params.id);
+  const task = await Task.findById(req.params.id).populate("user");
 
   if (!task) return res.status(404).json({ message: "Task not found" });
 
@@ -44,5 +46,5 @@ export const deleteTask = async (req, res) => {
 
   if (!task) return res.status(404).json({ message: "Task not found" });
 
-  res.json(task);
+  res.sendStatus(204);
 };
